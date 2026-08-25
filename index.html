@@ -1,1 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#05070d">
 
+    <title>All Models Auto Sales</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 50% 15%, rgba(0, 140, 255, 0.20), transparent 35%),
+                radial-gradient(circle at 10% 90%, rgba(0, 90, 255, 0.12), transparent 30%),
+                #05070d;
+            color: white;
+            display: flex;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            padding: 35px 20px 30px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container {
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 22px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(0, 174, 255, 0.5);
+            box-shadow:
+                0 0 20px rgba(0, 174, 255, 0.35),
+                0 0 60px rgba(0, 100, 255, 0.15);
+            animation: pulse 3s infinite;
+            overflow: hidden;
+        }
+
+        .logo {
+            width: 88%;
+            height: 88%;
+            object-fit: contain;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow:
+                    0 0 20px rgba(0,174,255,0.35),
+                    0 0 60px rgba(0,100,255,0.15);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 35px rgba(0,174,255,0.55),
+                    0 0 90px rgba(0,100,255,0.25);
+            }
+        }
+
+        .company {
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            text-shadow: 0 0 15px rgba(0,174,255,0.5);
+        }
+
+        .tagline {
+            color: #8da1b8;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .location {
+            color: #c8d3df;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 62px;
+            padding: 15px 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: rgba(255,255,255,0.055);
+            border: 1px solid rgba(0,174,255,0.35);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+            backdrop-filter: blur(10px);
+            transition: all 0.25s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            background: rgba(0,140,255,0.13);
+            border-color: rgba(0,190,255,0.8);
+            box-shadow:
+                0 0 20px rgba(0,174,255,0.25),
+                0 10px 35px rgba(0,0,0,0.35);
+        }
+
+        .icon {
+            font-size: 24px;
+            width: 40px;
+            text-align: center;
+            margin-right: 8px;
+        }
+
+        .primary {
+            background: linear-gradient(
+                135deg,
+                rgba(0,130,255,0.35),
+                rgba(0,80,180,0.18)
+            );
+            border-color: rgba(0,190,255,0.7);
+        }
+
+        .phone {
+            margin-top: 25px;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .phone a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .phone a:hover {
+            color: #45c7ff;
+        }
+
+        .divider {
+            width: 70px;
+            height: 2px;
+            margin: 27px auto;
+            background: rgba(0,174,255,0.7);
+            box-shadow: 0 0 12px rgba(0,174,255,0.8);
+        }
+
+        .footer {
+            color: #607286;
+            font-size: 11px;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 400px) {
+            .company {
+                font-size: 23px;
+            }
+
+            .logo-container {
+                width: 145px;
+                height: 145px;
+            }
+
+            .container {
+                padding-top: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGO -->
+    <div class="logo-container">
+        <img
+            src="ALL_MODELS_AUTO_SALES_LOGO.jpg"
+            alt="All Models Auto Sales Logo"
+            class="logo"
+        >
+    </div>
+
+    <!-- COMPANY -->
+    <div class="company">
+        ALL MODELS AUTO SALES INC
+    </div>
+
+    <div class="tagline">
+        Your Next Vehicle Starts Here
+    </div>
+
+    <!-- LOCATION -->
+    <div class="location">
+        301 N SCOTT AVE<br>
+        BELTON, MO 64030
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+
+        <a
+            class="button primary"
+            href="tel:+18168880434"
+        >
+            <span class="icon">📞</span>
+            CALL NOW
+        </a>
+
+        <a
+            class="button"
+            href="https://www.allmodelsautosales.com/cars-for-sale"
+            target="_blank"
+        >
+            <span class="icon">🚗</span>
+            VIEW INVENTORY
+        </a>
+
+        <a
+            class="button"
+            href="https://www.google.com/maps/search/?api=1&query=301+N+Scott+Ave,+Belton,+MO+64030"
+            target="_blank"
+        >
+            <span class="icon">📍</span>
+            GET DIRECTIONS
+        </a>
+
+        <button
+            class="button"
+            onclick="saveContact()"
+        >
+            <span class="icon">💾</span>
+            SAVE CONTACT
+        </button>
+
+    </div>
+
+    <!-- PHONE -->
+    <div class="phone">
+        <a href="tel:+18168880434">
+            816-888-0434
+        </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+        ALL MODELS AUTO SALES INC<br>
+        BELTON, MISSOURI
+    </div>
+
+</div>
+
+<script>
+function saveContact() {
+
+    const contact =
+`BEGIN:VCARD
+VERSION:3.0
+FN:ALL MODELS AUTO SALES INC
+ORG:ALL MODELS AUTO SALES INC
+TEL;TYPE=WORK,VOICE:+18168880434
+ADR;TYPE=WORK:;;301 N Scott Ave;Belton;MO;64030;USA
+URL:https://www.allmodelsautosales.com/cars-for-sale
+END:VCARD`;
+
+    const blob = new Blob([contact], {
+        type: "text/vcard"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "All-Models-Auto-Sales.vcf";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+}
+</script>
+
+</body>
+</html>
