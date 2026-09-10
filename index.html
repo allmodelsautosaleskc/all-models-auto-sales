@@ -1,324 +1,656 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
     <meta name="theme-color" content="#05070d">
 
     <title>All Models Auto Sales</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        html {
+            min-height: 100%;
+            background: #05070d;
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             min-height: 100vh;
+            min-height: 100dvh;
+
+            /* BACKGROUND IMAGE */
             background:
-                radial-gradient(circle at 50% 15%, rgba(0, 140, 255, 0.20), transparent 35%),
-                radial-gradient(circle at 10% 90%, rgba(0, 90, 255, 0.12), transparent 30%),
-                #05070d;
+                linear-gradient(
+                    rgba(5, 7, 13, 0.42),
+                    rgba(5, 7, 13, 0.68)
+                ),
+                url("./fondo.png") center center / cover no-repeat;
+
+            background-attachment: fixed;
+
             color: white;
+
             display: flex;
             justify-content: center;
+
             overflow-x: hidden;
         }
+
+
+        /* SUBTLE GRID EFFECT */
 
         body::before {
             content: "";
             position: fixed;
             inset: 0;
+
             background-image:
-                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+                linear-gradient(
+                    rgba(255,255,255,0.018) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.018) 1px,
+                    transparent 1px
+                );
+
             background-size: 40px 40px;
+
             pointer-events: none;
+
+            z-index: 0;
         }
 
+
+        /* MAIN CONTAINER */
+
         .container {
+
             width: 100%;
             max-width: 520px;
-            padding: 35px 20px 30px;
+
+            padding:
+                max(35px, env(safe-area-inset-top))
+                20px
+                max(30px, env(safe-area-inset-bottom));
+
             text-align: center;
+
             position: relative;
+
             z-index: 1;
         }
 
+
+        /* LOGO */
+
         .logo-container {
+
             width: 170px;
             height: 170px;
+
             margin: 0 auto 22px;
+
             border-radius: 50%;
+
             display: flex;
             justify-content: center;
             align-items: center;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(0, 174, 255, 0.5);
+
+            background: rgba(5, 12, 25, 0.48);
+
+            border:
+                1px solid
+                rgba(0, 174, 255, 0.65);
+
             box-shadow:
                 0 0 20px rgba(0, 174, 255, 0.35),
-                0 0 60px rgba(0, 100, 255, 0.15);
+                0 0 60px rgba(0, 100, 255, 0.20);
+
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
             animation: pulse 3s infinite;
+
             overflow: hidden;
         }
 
+
         .logo {
+
             width: 88%;
             height: 88%;
+
             object-fit: contain;
         }
 
+
+        /* LOGO ANIMATION */
+
         @keyframes pulse {
+
             0%, 100% {
+
                 box-shadow:
                     0 0 20px rgba(0,174,255,0.35),
                     0 0 60px rgba(0,100,255,0.15);
+
             }
 
             50% {
+
                 box-shadow:
-                    0 0 35px rgba(0,174,255,0.55),
-                    0 0 90px rgba(0,100,255,0.25);
+                    0 0 35px rgba(0,174,255,0.60),
+                    0 0 90px rgba(0,100,255,0.28);
+
             }
         }
 
+
+        /* COMPANY NAME */
+
         .company {
+
             font-size: 27px;
+
             font-weight: 800;
+
             letter-spacing: 1.5px;
+
             margin-bottom: 8px;
-            text-shadow: 0 0 15px rgba(0,174,255,0.5);
+
+            text-shadow:
+                0 2px 8px rgba(0,0,0,0.9),
+                0 0 15px rgba(0,174,255,0.55);
         }
+
+
+        /* TAGLINE */
 
         .tagline {
-            color: #8da1b8;
+
+            color: #d6e7f8;
+
             font-size: 14px;
+
             letter-spacing: 3px;
+
             text-transform: uppercase;
+
             margin-bottom: 28px;
+
+            text-shadow:
+                0 2px 6px rgba(0,0,0,0.95);
         }
+
+
+        /* LOCATION */
 
         .location {
-            color: #c8d3df;
+
+            color: #ffffff;
+
             font-size: 15px;
+
+            font-weight: 600;
+
             line-height: 1.6;
+
             margin-bottom: 25px;
+
+            text-shadow:
+                0 2px 8px rgba(0,0,0,0.95);
         }
 
+
+        /* BUTTON AREA */
+
         .buttons {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 14px;
         }
 
+
+        /* BUTTONS */
+
         .button {
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             min-height: 62px;
+
             padding: 15px 20px;
+
             border-radius: 15px;
+
             text-decoration: none;
+
             color: white;
+
             font-size: 16px;
+
             font-weight: 700;
+
             letter-spacing: 1px;
-            background: rgba(255,255,255,0.055);
-            border: 1px solid rgba(0,174,255,0.35);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-            backdrop-filter: blur(10px);
-            transition: all 0.25s ease;
+
+            background:
+                rgba(5, 12, 25, 0.68);
+
+            border:
+                1px solid
+                rgba(0,174,255,0.48);
+
+            box-shadow:
+                0 8px 30px
+                rgba(0,0,0,0.38);
+
+            backdrop-filter: blur(12px);
+
+            -webkit-backdrop-filter: blur(12px);
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+
             cursor: pointer;
         }
 
+
         .button:hover {
+
             transform: translateY(-3px);
-            background: rgba(0,140,255,0.13);
-            border-color: rgba(0,190,255,0.8);
+
+            background:
+                rgba(0,100,190,0.38);
+
+            border-color:
+                rgba(0,190,255,0.9);
+
             box-shadow:
-                0 0 20px rgba(0,174,255,0.25),
-                0 10px 35px rgba(0,0,0,0.35);
+                0 0 20px
+                rgba(0,174,255,0.28),
+
+                0 10px 35px
+                rgba(0,0,0,0.45);
         }
 
+
+        .button:active {
+
+            transform: scale(0.98);
+        }
+
+
+        /* BUTTON ICON */
+
         .icon {
+
             font-size: 24px;
+
             width: 40px;
+
             text-align: center;
+
             margin-right: 8px;
         }
 
+
+        /* PRIMARY BUTTON */
+
         .primary {
-            background: linear-gradient(
-                135deg,
-                rgba(0,130,255,0.35),
-                rgba(0,80,180,0.18)
-            );
-            border-color: rgba(0,190,255,0.7);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,130,255,0.58),
+                    rgba(0,55,130,0.60)
+                );
+
+            border-color:
+                rgba(0,190,255,0.82);
+
+            box-shadow:
+                0 8px 30px rgba(0,0,0,0.35),
+                0 0 18px rgba(0,150,255,0.18);
         }
+
+
+        /* PHONE */
 
         .phone {
+
             margin-top: 25px;
+
             font-size: 18px;
+
             font-weight: 700;
+
             letter-spacing: 1px;
+
+            text-shadow:
+                0 2px 8px rgba(0,0,0,0.95);
         }
 
+
         .phone a {
+
             color: #ffffff;
+
             text-decoration: none;
         }
 
+
         .phone a:hover {
+
             color: #45c7ff;
         }
 
+
+        /* DIVIDER */
+
         .divider {
+
             width: 70px;
+
             height: 2px;
+
             margin: 27px auto;
-            background: rgba(0,174,255,0.7);
-            box-shadow: 0 0 12px rgba(0,174,255,0.8);
+
+            background:
+                rgba(0,174,255,0.85);
+
+            box-shadow:
+                0 0 12px
+                rgba(0,174,255,0.9);
         }
+
+
+        /* FOOTER */
 
         .footer {
-            color: #607286;
+
+            color: #d1deeb;
+
             font-size: 11px;
+
+            font-weight: 600;
+
             letter-spacing: 1px;
+
             line-height: 1.6;
+
+            text-shadow:
+                0 2px 7px rgba(0,0,0,1);
         }
+
+
+        /* MOBILE */
 
         @media (max-width: 400px) {
+
             .company {
+
                 font-size: 23px;
+
             }
+
 
             .logo-container {
+
                 width: 145px;
+
                 height: 145px;
+
             }
 
+
             .container {
+
                 padding-top: 25px;
+
+            }
+
+
+            .button {
+
+                font-size: 14px;
+
+                padding-left: 14px;
+
+                padding-right: 14px;
+
             }
         }
+
+
+        /* iPHONE / MOBILE BACKGROUND FIX */
+
+        @media (max-width: 768px) {
+
+            body {
+
+                background-attachment: scroll;
+
+                background-position: center center;
+
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
+
 
 <div class="container">
 
+
     <!-- LOGO -->
+
     <div class="logo-container">
+
         <img
             src="./LOGO2.png"
             alt="All Models Auto Sales Logo"
             class="logo"
         >
+
     </div>
+
 
     <!-- COMPANY -->
+
     <div class="company">
+
         ALL MODELS AUTO SALES INC
+
     </div>
+
 
     <div class="tagline">
+
         Your Next Vehicle Starts Here
+
     </div>
+
 
     <!-- LOCATION -->
+
     <div class="location">
+
         301 N SCOTT AVE<br>
+
         BELTON, MO 64030
+
     </div>
 
+
     <!-- BUTTONS -->
+
     <div class="buttons">
 
+
         <!-- MAIN PHONE -->
+
         <a
             class="button primary"
             href="tel:+18168880434"
         >
-            <span class="icon">📞</span>
+
+            <span class="icon">
+                📞
+            </span>
+
             CALL NOW
+
         </a>
 
+
         <!-- GONZALO -->
+
         <a
             class="button"
             href="tel:+19132088708"
         >
-            <span class="icon">👤</span>
+
+            <span class="icon">
+                👤
+            </span>
+
             GONZALO — 913-208-8708
+
         </a>
 
+
         <!-- ALEJANDRO -->
+
         <a
             class="button"
             href="tel:+19132318486"
         >
-            <span class="icon">👤</span>
+
+            <span class="icon">
+                👤
+            </span>
+
             ALEJANDRO — 913-231-8486
+
         </a>
 
+
         <!-- INVENTORY -->
+
         <a
             class="button"
             href="https://www.allmodelsautosales.com/cars-for-sale"
             target="_blank"
             rel="noopener noreferrer"
         >
-            <span class="icon">🚗</span>
+
+            <span class="icon">
+                🚗
+            </span>
+
             VIEW INVENTORY
+
         </a>
 
+
         <!-- DIRECTIONS -->
+
         <a
             class="button"
             href="https://www.google.com/maps/search/?api=1&query=301+N+Scott+Ave,+Belton,+MO+64030"
             target="_blank"
             rel="noopener noreferrer"
         >
-            <span class="icon">📍</span>
+
+            <span class="icon">
+                📍
+            </span>
+
             GET DIRECTIONS
+
         </a>
 
-        <!-- SAVE ALL CONTACT INFORMATION -->
+
+        <!-- SAVE CONTACT -->
+
         <a
             class="button primary"
             href="#"
             onclick="saveContact(); return false;"
         >
-            <span class="icon">💾</span>
+
+            <span class="icon">
+                💾
+            </span>
+
             SAVE CONTACT INFO
+
         </a>
 
+
     </div>
+
 
     <!-- MAIN PHONE -->
+
     <div class="phone">
+
         <a href="tel:+18168880434">
+
             816-888-0434
+
         </a>
+
     </div>
+
 
     <div class="divider"></div>
 
+
     <!-- FOOTER -->
+
     <div class="footer">
+
         ALL MODELS AUTO SALES INC<br>
+
         BELTON, MISSOURI
+
     </div>
+
 
 </div>
 
+
 <script>
 
+
 function saveContact() {
+
 
     const contact =
 `BEGIN:VCARD
@@ -330,9 +662,9 @@ TEL;TYPE=CELL,VOICE:+19132088708
 TEL;TYPE=CELL,VOICE:+19132318486
 ADR;TYPE=WORK:;;301 N Scott Ave;Belton;MO;64030;USA
 URL:https://www.allmodelsautosales.com/cars-for-sale
-NOTE:Gonzalo - 913-208-8708
-NOTE:Alejandro - 913-231-8486
+NOTE:Gonzalo - 913-208-8708 / Alejandro - 913-231-8486
 END:VCARD`;
+
 
     const blob = new Blob(
         [contact],
@@ -341,26 +673,43 @@ END:VCARD`;
         }
     );
 
-    const url = URL.createObjectURL(blob);
 
-    const link = document.createElement("a");
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
 
     link.href = url;
-    link.download = "All-Models-Auto-Sales.vcf";
+
+
+    link.download =
+        "All-Models-Auto-Sales.vcf";
+
 
     document.body.appendChild(link);
 
+
     link.click();
+
 
     document.body.removeChild(link);
 
+
     setTimeout(() => {
+
         URL.revokeObjectURL(url);
+
     }, 1000);
+
 }
+
 
 </script>
 
+
 </body>
+
 </html>
-```
