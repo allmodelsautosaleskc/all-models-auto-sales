@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,6 +131,7 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.25);
             backdrop-filter: blur(10px);
             transition: all 0.25s ease;
+            cursor: pointer;
         }
 
         .button:hover {
@@ -212,11 +214,11 @@
     <!-- LOGO -->
     <div class="logo-container">
         <img
-    src="./LOGO2.png"
-    alt="All Models Auto Sales Logo"
-    class="logo"
->
-   </div>
+            src="./LOGO2.png"
+            alt="All Models Auto Sales Logo"
+            class="logo"
+        >
+    </div>
 
     <!-- COMPANY -->
     <div class="company">
@@ -236,6 +238,7 @@
     <!-- BUTTONS -->
     <div class="buttons">
 
+        <!-- MAIN PHONE -->
         <a
             class="button primary"
             href="tel:+18168880434"
@@ -243,51 +246,60 @@
             <span class="icon">📞</span>
             CALL NOW
         </a>
-<a
-    class="button"
-    href="tel:+19132088708"
->
-    <span class="icon">👤</span>
-    GONZALO — 913-208-8708
-</a>
 
-<a
-    class="button"
-    href="tel:+19132318486"
->
-    <span class="icon">👤</span>
-    ALEJANDRO — 913-231-8486
-</a>
+        <!-- GONZALO -->
+        <a
+            class="button"
+            href="tel:+19132088708"
+        >
+            <span class="icon">👤</span>
+            GONZALO — 913-208-8708
+        </a>
+
+        <!-- ALEJANDRO -->
+        <a
+            class="button"
+            href="tel:+19132318486"
+        >
+            <span class="icon">👤</span>
+            ALEJANDRO — 913-231-8486
+        </a>
+
+        <!-- INVENTORY -->
         <a
             class="button"
             href="https://www.allmodelsautosales.com/cars-for-sale"
             target="_blank"
+            rel="noopener noreferrer"
         >
             <span class="icon">🚗</span>
             VIEW INVENTORY
         </a>
 
+        <!-- DIRECTIONS -->
         <a
             class="button"
             href="https://www.google.com/maps/search/?api=1&query=301+N+Scott+Ave,+Belton,+MO+64030"
             target="_blank"
+            rel="noopener noreferrer"
         >
             <span class="icon">📍</span>
             GET DIRECTIONS
         </a>
 
-     <a class="button" href="#" onclick="saveGonzalo(); return false;">
-    <span class="icon">💾</span>
-    SAVE GONZALO CONTACT
-</a>
+        <!-- SAVE ALL CONTACT INFORMATION -->
+        <a
+            class="button primary"
+            href="#"
+            onclick="saveContact(); return false;"
+        >
+            <span class="icon">💾</span>
+            SAVE CONTACT INFO
+        </a>
 
-<a class="button" href="#" onclick="saveAlejandro(); return false;">
-    <span class="icon">💾</span>
-    SAVE ALEJANDRO CONTACT
-</a>  
     </div>
 
-    <!-- PHONE -->
+    <!-- MAIN PHONE -->
     <div class="phone">
         <a href="tel:+18168880434">
             816-888-0434
@@ -296,6 +308,7 @@
 
     <div class="divider"></div>
 
+    <!-- FOOTER -->
     <div class="footer">
         ALL MODELS AUTO SALES INC<br>
         BELTON, MISSOURI
@@ -304,6 +317,7 @@
 </div>
 
 <script>
+
 function saveContact() {
 
     const contact =
@@ -312,27 +326,41 @@ VERSION:3.0
 FN:ALL MODELS AUTO SALES INC
 ORG:ALL MODELS AUTO SALES INC
 TEL;TYPE=WORK,VOICE:+18168880434
+TEL;TYPE=CELL,VOICE:+19132088708
+TEL;TYPE=CELL,VOICE:+19132318486
 ADR;TYPE=WORK:;;301 N Scott Ave;Belton;MO;64030;USA
 URL:https://www.allmodelsautosales.com/cars-for-sale
+NOTE:Gonzalo - 913-208-8708
+NOTE:Alejandro - 913-231-8486
 END:VCARD`;
 
-    const blob = new Blob([contact], {
-        type: "text/vcard"
-    });
+    const blob = new Blob(
+        [contact],
+        {
+            type: "text/vcard;charset=utf-8"
+        }
+    );
 
     const url = URL.createObjectURL(blob);
 
     const link = document.createElement("a");
+
     link.href = url;
     link.download = "All-Models-Auto-Sales.vcf";
 
     document.body.appendChild(link);
+
     link.click();
+
     document.body.removeChild(link);
 
-    URL.revokeObjectURL(url);
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    }, 1000);
 }
+
 </script>
 
 </body>
 </html>
+```
