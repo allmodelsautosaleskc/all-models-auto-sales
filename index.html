@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +8,10 @@
 
     <meta name="theme-color" content="#05070d">
 
-    <!-- PWA -->
+    <!-- PWA MANIFEST -->
     <link rel="manifest" href="./manifest.json">
 
-    <!-- iPhone / iPad Icon -->
+    <!-- iPHONE / iPAD ICON -->
     <link rel="apple-touch-icon" href="./LOGO2.png">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -144,6 +143,8 @@
         }
 
 
+        /* LOGO ANIMATION */
+
         @keyframes pulse {
 
             0%, 100% {
@@ -224,7 +225,7 @@
         }
 
 
-        /* BUTTON */
+        /* BUTTONS */
 
         .button {
             display: flex;
@@ -274,6 +275,9 @@
                 box-shadow 0.25s ease;
 
             cursor: pointer;
+
+            appearance: none;
+            -webkit-appearance: none;
         }
 
 
@@ -307,6 +311,8 @@
             text-align: center;
 
             margin-right: 8px;
+
+            flex-shrink: 0;
         }
 
 
@@ -506,12 +512,16 @@
     <!-- COMPANY -->
 
     <div class="company">
+
         ALL MODELS AUTO SALES INC
+
     </div>
 
 
     <div class="tagline">
+
         Your Next Vehicle Starts Here
+
     </div>
 
 
@@ -531,7 +541,7 @@
     <div class="buttons">
 
 
-        <!-- CALL -->
+        <!-- CALL NOW -->
 
         <a
             class="button primary"
@@ -607,32 +617,34 @@
 
         <!-- SAVE CONTACT -->
 
-        <a
+        <button
             class="button primary"
-            href="#"
-            onclick="saveContact(); return false;"
+            type="button"
+            onclick="saveContact()"
         >
 
             <span class="icon">💾</span>
 
             SAVE CONTACT INFO
 
-        </a>
+        </button>
 
 
-        <!-- INSTALL APP -->
+        <!-- INSTALL / ADD TO HOME SCREEN -->
 
         <button
             class="button install-button"
             id="installButton"
             type="button"
-            onclick="installApp();"
+            onclick="installApp()"
         >
 
             <span class="icon">📲</span>
 
             <span id="installText">
+
                 ADD TO HOME SCREEN
+
             </span>
 
         </button>
@@ -709,22 +721,27 @@ END:VCARD`;
             }
         );
 
+
     const url =
         URL.createObjectURL(blob);
 
+
     const link =
         document.createElement("a");
+
 
     link.href = url;
 
     link.download =
         "All-Models-Auto-Sales.vcf";
 
+
     document.body.appendChild(link);
 
     link.click();
 
     document.body.removeChild(link);
+
 
     setTimeout(
         function() {
@@ -734,6 +751,7 @@ END:VCARD`;
         },
         1000
     );
+
 }
 
 
@@ -744,21 +762,7 @@ END:VCARD`;
 let deferredPrompt = null;
 
 
-window.addEventListener(
-    "beforeinstallprompt",
-    function(event) {
-
-        event.preventDefault();
-
-        deferredPrompt = event;
-
-    }
-);
-
-
-/* ==========================================
-   DETECT DEVICE
-========================================== */
+/* DEVICE DETECTION */
 
 const userAgent =
     navigator.userAgent.toLowerCase();
@@ -776,9 +780,187 @@ const isDesktop =
     !isIOS && !isAndroid;
 
 
-/* CHANGE BUTTON TEXT ON COMPUTER */
+/* CHANGE BUTTON NAME ON COMPUTER */
 
 if (isDesktop) {
 
     document.getElementById(
-```
+        "installText"
+    ).textContent =
+        "INSTALL APP";
+
+}
+
+
+/* CAPTURE BROWSER INSTALL EVENT */
+
+window.addEventListener(
+    "beforeinstallprompt",
+    function(event) {
+
+        event.preventDefault();
+
+        deferredPrompt = event;
+
+    }
+);
+
+
+/* INSTALL BUTTON */
+
+async function installApp() {
+
+    const message =
+        document.getElementById(
+            "installMessage"
+        );
+
+
+    const standalone =
+        window.matchMedia(
+            "(display-mode: standalone)"
+        ).matches ||
+        window.navigator.standalone === true;
+
+
+    /* ALREADY INSTALLED */
+
+    if (standalone) {
+
+        message.style.display =
+            "block";
+
+        message.innerHTML =
+            "✓ All Models Auto Sales is already installed on this device.";
+
+        return;
+
+    }
+
+
+    /* iPHONE / iPAD */
+
+    if (isIOS) {
+
+        message.style.display =
+            "block";
+
+        message.innerHTML =
+            "<strong>ADD ALL MODELS AUTO SALES TO YOUR HOME SCREEN</strong><br><br>" +
+
+            "1. Open this page using <strong>Safari</strong>.<br><br>" +
+
+            "2. Tap the <strong>Share</strong> button.<br><br>" +
+
+            "3. Select <strong>Add to Home Screen</strong>.<br><br>" +
+
+            "4. Tap <strong>Add</strong>.<br><br>" +
+
+            "The All Models Auto Sales icon will appear on your Home Screen.";
+
+        return;
+
+    }
+
+
+    /* CHROME / EDGE / ANDROID */
+
+    if (deferredPrompt) {
+
+        deferredPrompt.prompt();
+
+
+        const result =
+            await deferredPrompt.userChoice;
+
+
+        if (
+            result.outcome ===
+            "accepted"
+        ) {
+
+            message.style.display =
+                "block";
+
+            message.innerHTML =
+                "✓ All Models Auto Sales has been installed successfully.";
+
+        }
+
+
+        deferredPrompt = null;
+
+        return;
+
+    }
+
+
+    /* DESKTOP */
+
+    if (isDesktop) {
+
+        message.style.display =
+            "block";
+
+        message.innerHTML =
+            "<strong>INSTALL ALL MODELS AUTO SALES</strong><br><br>" +
+
+            "Look for the <strong>Install</strong> icon in your browser address bar.<br><br>" +
+
+            "You can also open the Chrome or Edge menu and choose " +
+
+            "<strong>Install App</strong> or <strong>Create Shortcut</strong>.";
+
+        return;
+
+    }
+
+
+    /* ANDROID FALLBACK */
+
+    message.style.display =
+        "block";
+
+    message.innerHTML =
+        "<strong>ADD TO HOME SCREEN</strong><br><br>" +
+
+        "Tap the browser menu <strong>⋮</strong> and select " +
+
+        "<strong>Add to Home Screen</strong> or <strong>Install App</strong>.";
+
+}
+
+
+/* ==========================================
+   INSTALL COMPLETE
+========================================== */
+
+window.addEventListener(
+    "appinstalled",
+    function() {
+
+        deferredPrompt = null;
+
+
+        const message =
+            document.getElementById(
+                "installMessage"
+            );
+
+
+        message.style.display =
+            "block";
+
+
+        message.innerHTML =
+            "✓ All Models Auto Sales has been installed successfully.";
+
+    }
+);
+
+
+</script>
+
+
+</body>
+</html>
