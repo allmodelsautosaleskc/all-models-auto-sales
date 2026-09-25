@@ -2,717 +2,403 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-    <meta name="theme-color" content="#05070d">
-
-    <!-- PWA MANIFEST -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL MODELS AUTO SALES INC</title>
     <link rel="manifest" href="./manifest.json">
-
-    <!-- iPHONE / iPAD ICON -->
-    <link rel="apple-touch-icon" href="./LOGO2.png">
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="All Models Auto">
-
-    <title>All Models Auto Sales</title>
-
+    <meta name="theme-color" content="#131d2a">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html {
-            min-height: 100%;
-            background: #05070d;
-        }
-
         body {
             font-family: Arial, Helvetica, sans-serif;
-
             min-height: 100vh;
             min-height: 100dvh;
-
             background:
                 linear-gradient(
                     rgba(5, 7, 13, 0.42),
                     rgba(5, 7, 13, 0.68)
                 ),
                 url("./fondo.png") center center / cover no-repeat;
-
-            background-attachment: fixed;
-
             color: white;
-
             display: flex;
             justify-content: center;
-
             overflow-x: hidden;
         }
 
-
-        /* GRID EFFECT */
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-
-            background-image:
-                linear-gradient(
-                    rgba(255,255,255,0.018) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.018) 1px,
-                    transparent 1px
-                );
-
-            background-size: 40px 40px;
-
-            pointer-events: none;
-
-            z-index: 0;
+        /* Mantener background-attachment: fixed solo en pantallas de escritorio */
+        @media (min-width: 769px) {
+            body {
+                background-attachment: fixed;
+            }
         }
-
-
-        /* MAIN CONTAINER */
 
         .container {
             width: 100%;
-            max-width: 520px;
-
-            padding:
-                max(35px, env(safe-area-inset-top))
-                20px
-                max(30px, env(safe-area-inset-bottom));
-
-            text-align: center;
-
-            position: relative;
-
-            z-index: 1;
-        }
-
-
-        /* LOGO */
-
-        .logo-container {
-            width: 170px;
-            height: 170px;
-
-            margin: 0 auto 22px;
-
-            border-radius: 50%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            background: rgba(5, 12, 25, 0.48);
-
-            border: 1px solid rgba(0, 174, 255, 0.65);
-
-            box-shadow:
-                0 0 20px rgba(0, 174, 255, 0.35),
-                0 0 60px rgba(0, 100, 255, 0.20);
-
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-
-            animation: pulse 3s infinite;
-
-            overflow: hidden;
-        }
-
-
-        .logo {
-            width: 88%;
-            height: 88%;
-            object-fit: contain;
-        }
-
-
-        @keyframes pulse {
-
-            0%, 100% {
-                box-shadow:
-                    0 0 20px rgba(0,174,255,0.35),
-                    0 0 60px rgba(0,100,255,0.15);
-            }
-
-            50% {
-                box-shadow:
-                    0 0 35px rgba(0,174,255,0.60),
-                    0 0 90px rgba(0,100,255,0.28);
-            }
-        }
-
-
-        /* COMPANY */
-
-        .company {
-            font-size: 27px;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            margin-bottom: 8px;
-
-            text-shadow:
-                0 2px 8px rgba(0,0,0,0.9),
-                0 0 15px rgba(0,174,255,0.55);
-        }
-
-
-        /* TAGLINE */
-
-        .tagline {
-            color: #d6e7f8;
-
-            font-size: 14px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-
-            margin-bottom: 28px;
-
-            text-shadow:
-                0 2px 6px rgba(0,0,0,0.95);
-        }
-
-
-        /* LOCATION */
-
-        .location {
-            color: #ffffff;
-
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.6;
-
-            margin-bottom: 25px;
-
-            text-shadow:
-                0 2px 8px rgba(0,0,0,0.95);
-        }
-
-
-        /* BUTTON AREA */
-
-        .buttons {
+            max-width: 480px;
+            padding: 24px 18px 40px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-box {
+            width: 100%;
+            max-width: 320px;
+            margin-top: 10px;
+            margin-bottom: 22px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-box img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.6));
+        }
+
+        .company {
+            font-size: 23px;
+            font-weight: 900;
+            letter-spacing: 0.8px;
+            text-align: center;
+            margin-bottom: 6px;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .tagline {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #f2ba3f;
+            text-align: center;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+        }
+
+        .action-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .action-item {
+            background: rgba(18, 25, 38, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 16px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .action-item:hover,
+        .action-item:active {
+            transform: translateY(-3px);
+            background: rgba(30, 42, 62, 0.88);
+            border-color: rgba(242, 186, 63, 0.5);
+        }
+
+        .action-item i {
+            font-size: 20px;
+            color: #f2ba3f;
+        }
+
+        .action-item span {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+
+        .main-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #182333 0%, #0d1420 100%);
+            border: 1px solid rgba(242, 186, 63, 0.35);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 18px;
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            margin-bottom: 14px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .main-btn:hover,
+        .main-btn:active {
+            border-color: #f2ba3f;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+        }
+
+        .main-btn-left {
+            display: flex;
+            align-items: center;
             gap: 14px;
         }
 
+        .main-btn-left i {
+            font-size: 18px;
+            color: #f2ba3f;
+            width: 22px;
+            text-align: center;
+        }
 
-        /* BUTTONS */
+        .main-btn-arrow {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+        }
 
-        .button {
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
+        .card {
             width: 100%;
-            min-height: 62px;
-
-            padding: 15px 20px;
-
-            border-radius: 15px;
-
-            text-decoration: none;
-
-            color: white;
-
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 1px;
-
-            background:
-                rgba(5, 12, 25, 0.68);
-
-            border:
-                1px solid
-                rgba(0,174,255,0.48);
-
-            box-shadow:
-                0 8px 30px
-                rgba(0,0,0,0.38);
-
+            background: rgba(15, 22, 33, 0.72);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-
-            transition:
-                transform 0.25s ease,
-                background 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease;
-
-            cursor: pointer;
-
-            appearance: none;
-            -webkit-appearance: none;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
         }
 
-
-        .button:hover {
-            transform: translateY(-3px);
-
-            background:
-                rgba(0,100,190,0.38);
-
-            border-color:
-                rgba(0,190,255,0.9);
-
-            box-shadow:
-                0 0 20px rgba(0,174,255,0.28),
-                0 10px 35px rgba(0,0,0,0.45);
+        .card-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #f2ba3f;
+            margin-bottom: 14px;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-
-        .button:active {
-            transform: scale(0.98);
+        .card-title i {
+            font-size: 16px;
         }
 
-
-        /* ICON */
-
-        .icon {
-            font-size: 24px;
-            width: 40px;
-
-            text-align: center;
-
-            margin-right: 8px;
-
-            flex-shrink: 0;
-        }
-
-
-        /* PRIMARY */
-
-        .primary {
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,130,255,0.58),
-                    rgba(0,55,130,0.60)
-                );
-
-            border-color:
-                rgba(0,190,255,0.82);
-
-            box-shadow:
-                0 8px 30px rgba(0,0,0,0.35),
-                0 0 18px rgba(0,150,255,0.18);
-        }
-
-
-        /* SHARE BUTTON */
-
-        .share-button {
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,110,200,0.65),
-                    rgba(5,25,65,0.78)
-                );
-
-            border-color:
-                rgba(70,195,255,0.75);
-        }
-
-
-        /* INSTALL BUTTON */
-
-        .install-button {
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,170,255,0.78),
-                    rgba(0,65,160,0.78)
-                );
-
-            border-color:
-                rgba(80,210,255,0.95);
-
-            box-shadow:
-                0 0 22px rgba(0,174,255,0.30),
-                0 8px 30px rgba(0,0,0,0.40);
-        }
-
-
-        /* MESSAGE */
-
-        .install-message {
-            display: none;
-
-            margin-top: 18px;
-
-            padding: 17px;
-
-            border-radius: 14px;
-
-            background:
-                rgba(5,12,25,0.94);
-
-            border:
-                1px solid
-                rgba(0,174,255,0.65);
-
-            box-shadow:
-                0 0 20px
-                rgba(0,174,255,0.18);
-
-            color: white;
-
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
             font-size: 14px;
-
-            line-height: 1.7;
-
-            word-break: break-word;
+            line-height: 1.45;
+            color: #e2e8f0;
         }
 
-
-        /* PHONE */
-
-        .phone {
-            margin-top: 25px;
-
-            font-size: 18px;
-
-            font-weight: 700;
-
-            letter-spacing: 1px;
-
-            text-shadow:
-                0 2px 8px rgba(0,0,0,0.95);
+        .info-row:last-child {
+            margin-bottom: 0;
         }
 
+        .info-row i {
+            color: #f2ba3f;
+            margin-top: 2px;
+            width: 18px;
+            text-align: center;
+            font-size: 15px;
+        }
 
-        .phone a {
+        .location-link, .phone-link {
             color: #ffffff;
             text-decoration: none;
         }
 
-
-        .phone a:hover {
-            color: #45c7ff;
+        .location-link:hover, .phone-link:hover {
+            color: #f2ba3f;
+            text-decoration: underline;
         }
-
-
-        /* DIVIDER */
-
-        .divider {
-            width: 70px;
-            height: 2px;
-
-            margin: 27px auto;
-
-            background:
-                rgba(0,174,255,0.85);
-
-            box-shadow:
-                0 0 12px
-                rgba(0,174,255,0.9);
-        }
-
-
-        /* FOOTER */
 
         .footer {
-            color: #d1deeb;
-
-            font-size: 11px;
-
-            font-weight: 600;
-
+            margin-top: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.5);
             letter-spacing: 1px;
-
-            line-height: 1.6;
-
-            text-shadow:
-                0 2px 7px rgba(0,0,0,1);
         }
 
-
-        /* MOBILE */
-
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
+            .container {
+                padding: 18px 14px 30px;
+            }
 
             .company {
-                font-size: 23px;
+                font-size: 20px;
             }
 
-            .logo-container {
-                width: 145px;
-                height: 145px;
+            .tagline {
+                font-size: 12px;
             }
 
-            .container {
-                padding-top: 25px;
+            .action-grid {
+                gap: 8px;
             }
 
-            .button {
-                font-size: 14px;
-                padding-left: 14px;
-                padding-right: 14px;
+            .action-item {
+                padding: 14px 4px;
             }
-        }
 
+            .action-item i {
+                font-size: 18px;
+            }
 
-        @media (max-width: 768px) {
-
-            body {
-                background-attachment: scroll;
-                background-position: center center;
+            .action-item span {
+                font-size: 10px;
             }
         }
-
     </style>
 </head>
-
-
 <body>
 
+    <div class="container">
 
-<div class="container">
+        <!-- LOGO -->
+        <div class="logo-box">
+            <img src="./logo.png" alt="ALL MODELS AUTO SALES INC LOGO">
+        </div>
 
+        <!-- COMPANY -->
+        <h1 class="company">ALL MODELS AUTO SALES INC</h1>
+        <div class="tagline">USED CAR DEALER</div>
 
-    <!-- LOGO -->
+        <!-- QUICK ACTIONS GRID -->
+        <div class="action-grid">
+            <a href="tel:+18168880434" class="action-item">
+                <i class="fa-solid fa-phone"></i>
+                <span>CALL</span>
+            </a>
+            <a href="sms:+19132088708" class="action-item">
+                <i class="fa-solid fa-comment-sms"></i>
+                <span>TEXT</span>
+            </a>
+            <a href="https://maps.google.com/?q=301+N+Scott+Ave,+Belton,+MO+64030" target="_blank" rel="noopener noreferrer" class="action-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>MAP</span>
+            </a>
+            <div class="action-item" onclick="saveContact()">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>SAVE</span>
+            </div>
+        </div>
 
-    <div class="logo-container">
-
-        <img
-            src="./LOGO2.png"
-            alt="All Models Auto Sales Logo"
-            class="logo"
-        >
-
-    </div>
-
-
-    <!-- COMPANY -->
-
-    <div class="company">
-        ALL MODELS AUTO SALES INC
-    </div>
-
-
-    <div class="tagline">
-        Your Next Vehicle Starts Here
-    </div>
-
-
-    <!-- LOCATION -->
-
-    <div class="location">
-
-        301 N SCOTT AVE<br>
-
-        BELTON, MO 64030
-
-    </div>
-
-
-    <!-- BUTTONS -->
-
-    <div class="buttons">
-
-
-        <!-- CALL -->
-
-        <a
-            class="button primary"
-            href="tel:+18168880434"
-        >
-
-            <span class="icon">📞</span>
-
-            CALL NOW
-
+        <!-- MAIN BUTTONS -->
+        <a href="https://www.allmodelsautosales.com/cars-for-sale" target="_blank" rel="noopener noreferrer" class="main-btn">
+            <div class="main-btn-left">
+                <i class="fa-solid fa-car"></i>
+                <span>INVENTORY</span>
+            </div>
+            <i class="fa-solid fa-chevron-right main-btn-arrow"></i>
         </a>
 
-
-        <!-- GONZALO -->
-
-        <a
-            class="button"
-            href="tel:+19132088708"
-        >
-
-            <span class="icon">👤</span>
-
-            GONZALO — 913-208-8708
-
+        <a href="tel:+18168880434" class="main-btn">
+            <div class="main-btn-left">
+                <i class="fa-solid fa-headset"></i>
+                <span>OFFICE PHONE</span>
+            </div>
+            <i class="fa-solid fa-chevron-right main-btn-arrow"></i>
         </a>
 
-
-        <!-- ALEJANDRO -->
-
-        <a
-            class="button"
-            href="tel:+19132318486"
-        >
-
-            <span class="icon">👤</span>
-
-            ALEJANDRO — 913-231-8486
-
+        <a href="https://maps.google.com/?q=301+N+Scott+Ave,+Belton,+MO+64030" target="_blank" rel="noopener noreferrer" class="main-btn">
+            <div class="main-btn-left">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>GET DIRECTIONS</span>
+            </div>
+            <i class="fa-solid fa-chevron-right main-btn-arrow"></i>
         </a>
 
+        <div class="main-btn" id="installBtn" style="display: none;" onclick="installPWA()">
+            <div class="main-btn-left">
+                <i class="fa-solid fa-download"></i>
+                <span>ADD TO HOME SCREEN</span>
+            </div>
+            <i class="fa-solid fa-chevron-right main-btn-arrow"></i>
+        </div>
 
-        <!-- INVENTORY -->
+        <!-- INFO CARD -->
+        <div class="card">
+            <div class="card-title">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>DEALERSHIP INFO</span>
+            </div>
 
-        <a
-            class="button"
-            href="https://www.allmodelsautosales.com/cars-for-sale"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+            <div class="info-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <a href="https://maps.google.com/?q=301+N+Scott+Ave,+Belton,+MO+64030" target="_blank" rel="noopener noreferrer" class="location-link">
+                    301 N Scott Ave<br>
+                    Belton, MO 64030
+                </a>
+            </div>
 
-            <span class="icon">🚗</span>
+            <div class="info-row">
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                    Office: <a href="tel:+18168880434" class="phone-link">(816) 888-0434</a>
+                </div>
+            </div>
 
-            VIEW INVENTORY
+            <div class="info-row">
+                <i class="fa-solid fa-user-gear"></i>
+                <div>
+                    Gonzalo: <a href="tel:+19132088708" class="phone-link">(913) 208-8708</a><br>
+                    Alejandro: <a href="tel:+19132318486" class="phone-link">(913) 231-8486</a>
+                </div>
+            </div>
 
-        </a>
+            <div class="info-row">
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                    Mon - Fri: 9:00 AM - 6:00 PM<br>
+                    Sat: 9:00 AM - 4:00 PM<br>
+                    Sun: Closed
+                </div>
+            </div>
+        </div>
 
-
-        <!-- DIRECTIONS -->
-
-        <a
-            class="button"
-            href="https://www.google.com/maps/search/?api=1&query=301+N+Scott+Ave%2C+Belton%2C+MO+64030"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            <span class="icon">📍</span>
-
-            GET DIRECTIONS
-
-        </a>
-
-
-        <!-- SAVE CONTACT -->
-
-        <button
-            class="button primary"
-            type="button"
-            onclick="saveContact()"
-        >
-
-            <span class="icon">💾</span>
-
-            SAVE CONTACT INFO
-
-        </button>
-
-
-        <!-- SHARE -->
-
-        <button
-            class="button share-button"
-            type="button"
-            onclick="sharePage()"
-        >
-
-            <span class="icon">🔗</span>
-
-            SHARE THIS PAGE
-
-        </button>
-
-
-        <!-- INSTALL -->
-
-        <button
-            class="button install-button"
-            id="installButton"
-            type="button"
-            onclick="installApp()"
-        >
-
-            <span class="icon">📲</span>
-
-            <span id="installText">
-                ADD TO HOME SCREEN
-            </span>
-
-        </button>
-
+        <!-- FOOTER -->
+        <footer class="footer">
+            ALL MODELS AUTO SALES INC<br>
+            BELTON, MISSOURI
+        </footer>
 
     </div>
 
+    <script>
+        // Registrar Service Worker para PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .catch(err => console.log('Service Worker registration failed: ', err));
+            });
+        }
 
-    <!-- MESSAGE -->
+        // Detección de iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-    <div
-        class="install-message"
-        id="installMessage"
-    ></div>
-
-
-    <!-- PHONE -->
-
-    <div class="phone">
-
-        <a href="tel:+18168880434">
-            816-888-0434
-        </a>
-
-    </div>
-
-
-    <div class="divider"></div>
-
-
-    <!-- FOOTER -->
-
-    <div class="footer">
-
-        ALL MODELS AUTO SALES INC<br>
-
-        BELTON, MISSOURI
-
-    </div>
-
-
-</div>
-
-
-<script>
-
-
-/* ==========================================
-   SHOW MESSAGE
-========================================== */
-
-function showMessage(text) {
-
-    const message =
-        document.getElementById("installMessage");
-
-    message.style.display = "block";
-
-    message.innerHTML = text;
-}
-
-
-/* ==========================================
-   SAVE CONTACT
-========================================== */
-
-function saveContact() {
-
-    const contact =
+        // Función para guardar contacto (compatible con iOS y Android)
+        function saveContact() {
+            const contact = 
 `BEGIN:VCARD
 VERSION:3.0
 FN:ALL MODELS AUTO SALES INC
@@ -725,285 +411,47 @@ URL:https://www.allmodelsautosales.com/cars-for-sale
 NOTE:Gonzalo - 913-208-8708 / Alejandro - 913-231-8486
 END:VCARD`;
 
-    const blob =
-        new Blob(
-            [contact],
-            {
-                type: "text/vcard;charset=utf-8"
-            }
-        );
-
-    const url =
-        URL.createObjectURL(blob);
-
-    const link =
-        document.createElement("a");
-
-    link.href = url;
-
-    link.download =
-        "All-Models-Auto-Sales.vcf";
-
-    document.body.appendChild(link);
-
-    link.click();
-
-    document.body.removeChild(link);
-
-    setTimeout(
-        function() {
-
-            URL.revokeObjectURL(url);
-
-        },
-        1000
-    );
-}
-
-
-/* ==========================================
-   SHARE PAGE
-========================================== */
-
-async function sharePage() {
-
-    const cleanURL =
-        window.location.origin +
-        window.location.pathname;
-
-    const shareData = {
-
-        title:
-            "All Models Auto Sales Inc",
-
-        text:
-            "Check out All Models Auto Sales Inc in Belton, Missouri.",
-
-        url:
-            cleanURL
-    };
-
-
-    try {
-
-        if (navigator.share) {
-
-            await navigator.share(
-                shareData
-            );
-
-        } else {
-
-            await navigator.clipboard.writeText(
-                cleanURL
-            );
-
-            showMessage(
-                "✓ Link copied! You can now paste it into a text message, email, WhatsApp, Facebook, or another app."
-            );
-
-        }
-
-    } catch (error) {
-
-        if (error.name !== "AbortError") {
-
-            try {
-
-                await navigator.clipboard.writeText(
-                    cleanURL
-                );
-
-                showMessage(
-                    "✓ Link copied! You can now paste it wherever you want to share it."
-                );
-
-            } catch (copyError) {
-
-                showMessage(
-                    "<strong>SHARE THIS LINK:</strong><br><br>" +
-                    cleanURL
-                );
+            if (isIOS) {
+                window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(contact);
+            } else {
+                const blob = new Blob([contact], { type: "text/vcard;charset=utf-8" });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "All-Models-Auto-Sales.vcf";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
             }
         }
-    }
-}
 
+        // Manejo de la instalación PWA (prompt de Android)
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            const installBtn = document.getElementById('installBtn');
+            if (installBtn) {
+                installBtn.style.display = 'flex';
+            }
+        });
 
-/* ==========================================
-   INSTALL APP
-========================================== */
-
-let deferredPrompt = null;
-
-
-const userAgent =
-    navigator.userAgent.toLowerCase();
-
-
-const isIOS =
-    /iphone|ipad|ipod/.test(userAgent);
-
-
-const isAndroid =
-    /android/.test(userAgent);
-
-
-const isDesktop =
-    !isIOS && !isAndroid;
-
-
-/* DESKTOP BUTTON TEXT */
-
-if (isDesktop) {
-
-    document.getElementById(
-        "installText"
-    ).textContent =
-        "INSTALL APP";
-}
-
-
-/* CAPTURE INSTALL EVENT */
-
-window.addEventListener(
-    "beforeinstallprompt",
-    function(event) {
-
-        event.preventDefault();
-
-        deferredPrompt = event;
-    }
-);
-
-
-/* INSTALL */
-
-async function installApp() {
-
-    const standalone =
-        window.matchMedia(
-            "(display-mode: standalone)"
-        ).matches ||
-        window.navigator.standalone === true;
-
-
-    /* ALREADY INSTALLED */
-
-    if (standalone) {
-
-        showMessage(
-            "✓ All Models Auto Sales is already installed on this device."
-        );
-
-        return;
-    }
-
-
-    /* iPHONE / iPAD */
-
-    if (isIOS) {
-
-        showMessage(
-
-            "<strong>ADD ALL MODELS AUTO SALES TO YOUR HOME SCREEN</strong><br><br>" +
-
-            "1. Open this page in <strong>Safari</strong>.<br><br>" +
-
-            "2. Tap the <strong>Share</strong> button.<br><br>" +
-
-            "3. Select <strong>Add to Home Screen</strong>.<br><br>" +
-
-            "4. Tap <strong>Add</strong>.<br><br>" +
-
-            "The All Models Auto Sales icon will appear on your Home Screen."
-
-        );
-
-        return;
-    }
-
-
-    /* CHROME / EDGE / ANDROID */
-
-    if (deferredPrompt) {
-
-        deferredPrompt.prompt();
-
-        const result =
-            await deferredPrompt.userChoice;
-
-
-        if (
-            result.outcome ===
-            "accepted"
-        ) {
-
-            showMessage(
-                "✓ All Models Auto Sales has been installed successfully."
-            );
+        function installPWA() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                    const installBtn = document.getElementById('installBtn');
+                    if (installBtn) {
+                        installBtn.style.display = 'none';
+                    }
+                });
+            }
         }
-
-
-        deferredPrompt = null;
-
-        return;
-    }
-
-
-    /* DESKTOP */
-
-    if (isDesktop) {
-
-        showMessage(
-
-            "<strong>INSTALL ALL MODELS AUTO SALES</strong><br><br>" +
-
-            "Look for the <strong>Install</strong> icon in your browser address bar.<br><br>" +
-
-            "You can also open the Chrome or Edge menu and choose " +
-
-            "<strong>Install App</strong> or <strong>Create Shortcut</strong>."
-
-        );
-
-        return;
-    }
-
-
-    /* ANDROID FALLBACK */
-
-    showMessage(
-
-        "<strong>ADD TO HOME SCREEN</strong><br><br>" +
-
-        "Tap the browser menu <strong>⋮</strong> and select " +
-
-        "<strong>Add to Home Screen</strong> or <strong>Install App</strong>."
-
-    );
-}
-
-
-/* ==========================================
-   APP INSTALLED
-========================================== */
-
-window.addEventListener(
-    "appinstalled",
-    function() {
-
-        deferredPrompt = null;
-
-        showMessage(
-            "✓ All Models Auto Sales has been installed successfully."
-        );
-    }
-);
-
-
-</script>
-
-
+    </script>
 </body>
 </html>
