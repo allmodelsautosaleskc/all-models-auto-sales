@@ -46,10 +46,27 @@
             align-items: center;
         }
 
+        /* FOTO DE PORTADA / COVER */
+        .cover-box {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .cover-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
         .logo-box {
             width: 100%;
             max-width: 320px;
-            margin-top: 10px;
+            margin-top: 5px;
             margin-bottom: 22px;
             display: flex;
             justify-content: center;
@@ -274,6 +291,11 @@
 
     <div class="container">
 
+        <!-- FOTO DE PORTADA / COVER -->
+        <div class="cover-box">
+            <img src="./portada.png" alt="All Models Auto Sales Cover">
+        </div>
+
         <!-- LOGO -->
         <div class="logo-box">
             <img src="./logo.png" alt="ALL MODELS AUTO SALES INC LOGO">
@@ -320,6 +342,22 @@
             <i class="fa-solid fa-chevron-right main-btn-arrow"></i>
         </a>
 
+        <a href="tel:+19132088708" class="main-btn">
+            <div class="main-btn-left">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>GONZALO: (913) 208-8708</span>
+            </div>
+            <i class="fa-solid fa-chevron-right main-btn-arrow"></i>
+        </a>
+
+        <a href="tel:+19132318486" class="main-btn">
+            <div class="main-btn-left">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span>ALEJANDRO: (913) 231-8486</span>
+            </div>
+            <i class="fa-solid fa-chevron-right main-btn-arrow"></i>
+        </a>
+
         <a href="https://maps.google.com/?q=301+N+Scott+Ave,+Belton,+MO+64030" target="_blank" rel="noopener noreferrer" class="main-btn">
             <div class="main-btn-left">
                 <i class="fa-solid fa-map-location-dot"></i>
@@ -359,7 +397,7 @@
             </div>
 
             <div class="info-row">
-                <i class="fa-solid fa-user-gear"></i>
+                <i class="fa-solid fa-user"></i>
                 <div>
                     Gonzalo: <a href="tel:+19132088708" class="phone-link">(913) 208-8708</a><br>
                     Alejandro: <a href="tel:+19132318486" class="phone-link">(913) 231-8486</a>
