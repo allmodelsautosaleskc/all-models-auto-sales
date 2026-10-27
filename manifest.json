@@ -1,0 +1,17 @@
+{
+  "name": "ALL MODELS AUTO SALES INC",
+  "short_name": "ALL MODELS",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#131d2a",
+  "theme_color": "#131d2a",
+  "icons": [
+    {
+      "src": "./LOGO3.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

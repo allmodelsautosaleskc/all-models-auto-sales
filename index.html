@@ -7,8 +7,8 @@
     <title>ALL MODELS AUTO SALES INC</title>
 
     <link rel="manifest" href="./manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./LOGO3.png">
+    <link rel="apple-touch-icon" href="./LOGO3.png">
     <meta name="theme-color" content="#131d2a">
 
     <!-- SOCIAL SHARE -->
@@ -312,6 +312,16 @@
                 font-size: 10px;
             }
         }
+
+        /* TEXT RECIPIENT CHOOSER */
+        .text-modal { position: fixed; inset: 0; background: rgba(0,0,0,.76); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 9999; }
+        .text-modal.open { display: flex; }
+        .text-modal-panel { width: 100%; max-width: 390px; padding: 24px; border-radius: 20px; background: #121c2c; border: 1px solid rgba(242,186,63,.45); box-shadow: 0 20px 60px rgba(0,0,0,.55); text-align: center; }
+        .text-modal-panel h2 { font-size: 18px; margin-bottom: 20px; }
+        .text-choice { display: block; width: 100%; padding: 15px; margin: 10px 0; border-radius: 12px; background: #25334a; color: #fff; border: 1px solid rgba(242,186,63,.35); text-decoration: none; font: inherit; font-weight: bold; }
+        .text-choice small { display: block; margin-top: 5px; font-weight: normal; color: #d6dce5; }
+        .text-choice:hover { background: #354762; }
+        .text-cancel { margin-top: 10px; padding: 10px 18px; color: #fff; background: transparent; border: 1px solid #667085; border-radius: 10px; cursor: pointer; }
     </style>
 </head>
 
@@ -336,10 +346,10 @@
                 <span>CALL</span>
             </a>
 
-            <a href="sms:+19132088708" class="action-item">
+            <button type="button" class="action-item" onclick="openTextChooser()" aria-label="Choose who to text">
                 <i class="fa-solid fa-comment-sms"></i>
                 <span>TEXT</span>
-            </a>
+            </button>
 
             <a href="https://maps.google.com/?q=301+N+Scott+Ave,+Belton,+MO+64030"
                target="_blank"
@@ -532,7 +542,28 @@
     </div>
 
 
+
+    <div class="text-modal" id="textModal" role="dialog" aria-modal="true" aria-labelledby="textModalTitle" onclick="if(event.target===this) closeTextChooser()">
+        <div class="text-modal-panel">
+            <h2 id="textModalTitle">WHO WOULD YOU LIKE TO TEXT?</h2>
+            <a class="text-choice" href="sms:+19132088708" onclick="closeTextChooser()">GONZALO<small>(913) 208-8708</small></a>
+            <a class="text-choice" href="sms:+19132318486" onclick="closeTextChooser()">ALEJANDRO<small>(913) 231-8486</small></a>
+            <button type="button" class="text-cancel" onclick="closeTextChooser()">CANCEL</button>
+        </div>
+    </div>
+
     <script>
+
+
+        function openTextChooser() {
+            document.getElementById('textModal').classList.add('open');
+        }
+        function closeTextChooser() {
+            document.getElementById('textModal').classList.remove('open');
+        }
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') closeTextChooser();
+        });
 
         /* SERVICE WORKER */
         if ('serviceWorker' in navigator) {
